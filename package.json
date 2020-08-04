@@ -33,7 +33,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
