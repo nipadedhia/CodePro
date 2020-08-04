@@ -12,7 +12,6 @@ function Hero() {
             code!!!
           </h4>
           <div className="">
-            {/* <a href="#products" className="button"> */}
             <a href="#products" className="btn-large section">
               Select Course
             </a>
@@ -20,7 +19,6 @@ function Hero() {
         </div>
 
         <div className="col m6 s12">
-          {/* {" "} */}
           <img
             className="hero-img circle responsive-img"
             src={require("./assets/heroImg.png")}

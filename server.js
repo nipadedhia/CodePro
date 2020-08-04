@@ -14,7 +14,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Api routes will go here
+// Serve up static assets (usually on heroku)
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
+
+// Connect to the Mongo DB and Api routes will go here
 app.use(routes);
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/coursedb",
