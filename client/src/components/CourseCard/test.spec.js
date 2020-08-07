@@ -1,18 +1,18 @@
 import React from "react";
 import { shallow } from "enzyme";
-import PlantCard from "./index";
+import CourseCard from "./index";
 
 const mockData = [
   {
-    name: "Beautiful Plant",
-    price: 100,
+    name: "Full Stack Course",
+    price: 9500,
     image: "http://google.com",
     key: 2,
   },
 ];
-describe("PlantCard", () => {
+describe("CourseCard", () => {
   it("render props ", () => {
-    const wrapper = shallow(<PlantCard products={mockData} />);
+    const wrapper = shallow(<CourseCard products={mockData} />);
     expect(wrapper.exists()).toBe(true);
   });
 });
