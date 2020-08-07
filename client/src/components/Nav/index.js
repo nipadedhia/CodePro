@@ -1,28 +1,49 @@
-//materialize
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./assets/style.scss";
+import { AuthContext } from "../../Auth";
+import { CartContext } from "../../CartContex";
 
-// eslint-disable-next-line no-unused-expressions
-<nav>
-  <div className="container navbar nav-wrapper">
-    <div className="navbar-header ">
-      <Link className="brand logo" to={"/"}>
-        CodePro
-      </Link>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>
-          <Link className="nav-link right hide-on-med-and-down" to="">
-            Sign out
+import app from "../../firebase";
+
+function Nav({ sticky }) {
+  const { currentUser } = useContext(AuthContext);
+  const [cart, setCart] = useContext(CartContext);
+
+  return (
+    <nav className="navbar nav-wrapper">
+      <div className="container">
+        <div className="navbar-header ">
+          <Link className="brand logo" to={"/"}>
+            CodePro
           </Link>
-        </li>
-        <li>
-          <Link className="nav-link right hide-on-med-and-down" to="/cart">
-            {" "}
-            <i className="fas fa-shopping-bag pr-3"></i>My cart{" "}
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>;
+        </div>
+
+        <ul className="right hide-on-med-and-down">
+          {!currentUser ? (
+            <Link className="nav-link right hide-on-med-and-down" to="/signup">
+              Sign in
+            </Link>
+          ) : (
+            <Link
+              className="nav-link right hide-on-med-and-down"
+              to=""
+              onClick={() => app.auth().signOut()}>
+              Sign out
+            </Link>
+          )}
+
+          <li>
+            <Link className="nav-link right hide-on-med-and-down" to="/cart">
+              {" "}
+              <i className="fas fa-shopping-bag pr-3"></i>My cart{" "}
+              <span className="cart-size">( {cart.length} )</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export default Nav;
