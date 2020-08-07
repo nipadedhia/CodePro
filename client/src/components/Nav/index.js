@@ -17,30 +17,32 @@ function Nav({ sticky }) {
           <Link className="brand logo" to={"/"}>
             CodePro
           </Link>
+
+          <ul className="right hide-on-med-and-down">
+            {!currentUser ? (
+              <Link
+                className="nav-link right hide-on-med-and-down"
+                to="/signup">
+                Sign in
+              </Link>
+            ) : (
+              <Link
+                className="nav-link right hide-on-med-and-down"
+                to=""
+                onClick={() => app.auth().signOut()}>
+                Sign out
+              </Link>
+            )}
+
+            <li>
+              <Link className="nav-link right hide-on-med-and-down" to="/cart">
+                {" "}
+                <i className="fas fa-shopping-bag pr-3"></i>My cart{" "}
+                <span className="cart-size">( {cart.length} )</span>
+              </Link>
+            </li>
+          </ul>
         </div>
-
-        <ul className="right hide-on-med-and-down">
-          {!currentUser ? (
-            <Link className="nav-link right hide-on-med-and-down" to="/signup">
-              Sign in
-            </Link>
-          ) : (
-            <Link
-              className="nav-link right hide-on-med-and-down"
-              to=""
-              onClick={() => app.auth().signOut()}>
-              Sign out
-            </Link>
-          )}
-
-          <li>
-            <Link className="nav-link right hide-on-med-and-down" to="/cart">
-              {" "}
-              <i className="fas fa-shopping-bag pr-3"></i>My cart{" "}
-              <span className="cart-size">( {cart.length} )</span>
-            </Link>
-          </li>
-        </ul>
       </div>
     </nav>
   );
