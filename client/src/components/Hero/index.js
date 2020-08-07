@@ -19,6 +19,7 @@ function Hero() {
         </div>
 
         <div className="col m6 s12">
+          {" "}
           <img
             className="hero-img circle responsive-img"
             src={require("./assets/heroImg.png")}
