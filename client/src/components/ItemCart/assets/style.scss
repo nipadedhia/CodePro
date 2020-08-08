@@ -1,0 +1,11 @@
+@import "../../../style";
+
+.item-img-cart {
+  height: auto;
+  width: 50%;
+}
+
+.item-cart {
+  display: flex;
+  flex-direction: column;
+}
